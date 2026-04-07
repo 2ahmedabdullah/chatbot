@@ -1,6 +1,5 @@
 from langgraph.graph import StateGraph
 
-# Example placeholder nodes
 def supervisor_node(state):
     return {"intent": "greeting"}
 

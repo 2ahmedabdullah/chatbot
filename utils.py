@@ -1,4 +1,3 @@
-# utils.py (updated)
 
 import pandas as pd
 import textwrap
@@ -20,7 +19,7 @@ def extract_keywords(user_query, keyword_map):
 
 def filter_doctors_by_specialty(df, specialties):
     if not specialties:
-        # No specialties found → return empty
+        # No specialties found -> return empty
         return pd.DataFrame()
     filtered = df[df['Specialty'].isin(specialties)]
     return filtered
@@ -33,14 +32,14 @@ def search_doctors_private(user_query, df, client):
     Returns DataFrame with 'Reasoning' column added.
     """
     if df.empty:
-        return pd.DataFrame()  # no doctors available
-
-    # 1️⃣ Create a small summary for the LLM
+        return pd.DataFrame()  
+    
+    # 1️ Create a small summary for the LLM
     llama_summary = ""
     for idx, row in df.iterrows():
         llama_summary += f"ID {idx}: {row['Specialty']} ({row['Experience (Years)']} yrs)\n"
 
-    # 2️⃣ Prompt the LLM to rank doctors and provide reasoning
+    # 2️ Prompt the LLM to rank doctors and provide reasoning
     prompt = f"""
 A patient reports: "{user_query}"
 
@@ -63,21 +62,21 @@ Do NOT include any extra text outside JSON.
         messages=[{"role": "user", "content": prompt}]
     )
 
-    # 3️⃣ Parse the response safely
+    # 3️ Parse the response safely
     raw_text = completion.choices[0].message.content.strip()
 
     try:
         ai_response = json.loads(raw_text)
         top_picks = ai_response.get("results", [])
     except json.JSONDecodeError:
-        # fallback if LLM failed → just pick all doctors with generic reasoning
+        # fallback if LLM failed -> just pick all doctors with generic reasoning
         top_picks = [{"id": idx, "reasoning": "Recommended based on specialty."} for idx in df.index]
 
-    # 4️⃣ Build final DataFrame
+    # 4️ Build final DataFrame
     final_output = []
     for pick in top_picks:
         raw_id = str(pick['id']).upper().replace("ID", "").strip()
-        doc_id = int(raw_id)  # match DataFrame index
+        doc_id = int(raw_id) 
         row = df.loc[doc_id].to_dict()
         row['Reasoning'] = pick.get('reasoning', "Recommended based on specialty.")
         final_output.append(row)
@@ -109,10 +108,10 @@ def doctor_agent(user_query, df, keyword_map, client):
     - message (str) → what agent prints first
     - results (DataFrame) → doctor info (or None)
     """
-    # 1️⃣ Run pipeline
+    # 1️ Run pipeline
     results = doctor_search_pipeline(user_query, df, keyword_map, client)
 
-    # 2️⃣ Handle empty results politely
+    # 2️ Handle empty results politely
     if results.empty:
         return (
             "Sorry, I couldn’t find suitable specialists for your symptoms. "
@@ -120,7 +119,7 @@ def doctor_agent(user_query, df, keyword_map, client):
             None
         )
 
-    # 3️⃣ Generate concise message for user
+    # 3️ Generate concise message for user
     specialties = results["Specialty"].unique()
     message = f"🤖 Based on your symptoms, you may need a {', '.join(specialties)} specialist.\nHere are the best matches I found:"
     return message, results

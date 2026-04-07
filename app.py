@@ -1,4 +1,4 @@
-# app.py
+
 import pandas as pd
 import json
 from dotenv import load_dotenv
@@ -13,7 +13,6 @@ from agents.supervisor_agent import route_query
 
 # ------------------------------
 # Load datasets and config
-# ------------------------------
 
 df = pd.read_excel('sample_data.xlsx')
 

@@ -1,9 +1,8 @@
 from langgraph.graph import StateGraph
 
-# Import your actual implementations or define placeholders here
 from agents.greetings import greeting_agent
-from agents.tools_agent import tools_agent      # your Excel search
-from agents.supervisor_agent import route_query # your intent classifier
+from agents.tools_agent import tools_agent      
+from agents.supervisor_agent import route_query 
 
 # --- Node functions ---
 
@@ -25,7 +24,7 @@ def greeting_node(state):
 
 
 def tool_node(state):
-    # Call your tools agent (Excel doctor search)
+    # Calls tools agent (Excel doctor search)
     msg, results = tools_agent(
         state["input"],
         state["df"],
@@ -36,7 +35,7 @@ def tool_node(state):
 
 
 def rag_node(state):
-    # Call your RAG agent (for PDF/Word docs)
+    # Calls RAG agent (for PDF/Word docs)
     response = rag_agent(state["input"])
     return {"response": response}
 

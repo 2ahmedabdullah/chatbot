@@ -58,7 +58,6 @@ User Input
 │ ├── tools_agent.py # Doctor search interface
 │ ├── rag_agent.py # RAG logic
 │
-
 ├── rag/
 │ ├── chunking.py
 │ ├── embedding_model.py
@@ -72,7 +71,7 @@ User Input
 ├── requirements.txt
 └── .env # API keys
 
-
+```
 ---
 
 ## ⚙️ How It Works
@@ -116,7 +115,7 @@ Query
 ## 📊 Data Sources
 
 | Source | Usage |
-|------|------|
+|--------|------|
 | `sample_data.xlsx` | Doctor dataset |
 | `config.json` | Symptom → specialty mapping |
 | Documents | RAG knowledge base |

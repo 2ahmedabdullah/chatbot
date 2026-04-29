@@ -50,7 +50,7 @@ User Input
 
 ## 📁 Project Structure
 
-
+```
 .
 ├── agents/
 │ ├── supervisor_agent.py # Intent routing

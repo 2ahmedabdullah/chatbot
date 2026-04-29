@@ -53,39 +53,23 @@ User Input
 
 .
 ├── agents/
-
 │ ├── supervisor_agent.py # Intent routing
-
 │ ├── greetings.py # Greeting + foundation info
-
 │ ├── tools_agent.py # Doctor search interface
-
 │ ├── rag_agent.py # RAG logic
-
 │
 
 ├── rag/
-
 │ ├── chunking.py
-
 │ ├── embedding_model.py
-
 │ ├── retriever.py
-
 │ ├── generator.py
-
 │
-
 ├── utils.py # Doctor search pipeline
-
 ├── app.py # Main CLI entry point
-
 ├── config.json # Specialty keyword mapping
-
 ├── sample_data.xlsx # Doctor dataset
-
 ├── requirements.txt
-
 └── .env # API keys
 
 

@@ -143,14 +143,11 @@ cd public_health_chatbot
 
 2. Create a Groq API Key
 
-Go to: https://console.groq.com/keys
-Sign up / log in
-
-Generate a free API key
-
-Create a .env file in the root directory and add:
-
-GROQ_API_KEY=your_api_key_here
+    - Go to: https://console.groq.com/keys
+    - Sign up / log in
+    - Generate a free API key
+    - Create a .env file in the root directory and add:
+    - GROQ_API_KEY=your_api_key_here
 
 
 3. Create a Virtual Environment
@@ -178,30 +175,27 @@ python app.py
 
 💬 Example Queries
 
-"Hi, what do you do?"
-
-"I have chest pain and dizziness"
-
-"Tell me about diabetes care"
-
-"Find a doctor for knee pain"
+- "Hi, what do you do?"
+- "I have chest pain and dizziness"
+- "Tell me about diabetes care"
+- "Find a doctor for knee pain"
 
 
 ⚠️ Limitations (MVP Scope)
 
-No conversation memory
-No real-time doctor availability
-No medical validation (not a replacement for doctors)
-CLI-based (no UI/API yet)
-LLM-based routing may introduce latency
+- No conversation memory
+- No real-time doctor availability
+- No medical validation (not a replacement for doctors)
+- CLI-based (no UI/API yet)
+- LLM-based routing may introduce latency
 
 
 🛣️ Future Improvements
-Add FastAPI backend / UI
-Replace keyword matching with embeddings
-Add conversation memory
-Integrate vector database
-Improve medical safety & validation
+- Add FastAPI backend / UI
+- Replace keyword matching with embeddings
+- Add conversation memory
+- Integrate vector database
+- Improve medical safety & validation
 
 📌 Disclaimer
 
